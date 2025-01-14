@@ -3,9 +3,7 @@
         Jobs Page
     </x-slot:heading>
 
-
-    {{-- Learn Blade Directives --}}
-
+    {{-- Blade Directives for Iterating Jobs --}}
     @foreach($jobs as $job)
         <li>
             <a href="/jobs/{{ $job['id'] }}" class="text-blue-500 hover:underline">
@@ -14,10 +12,6 @@
                 </strong>
                 : Pays {{ $job['salary'] }} per Year
             </a>
-
         </li>
-
     @endforeach
-
 </x-layout>
-

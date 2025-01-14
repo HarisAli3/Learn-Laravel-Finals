@@ -1,49 +1,34 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Job;
+
+/*Route::get('/', function () {
+    $jobs = Job::all();
+
+    dd($jobs[0]->title);
+});*/
 
 Route::get('/', function () {
     return view('home');
 });
 
 Route::get('/jobs', function () {
-    return view('jobs' , [
-        "title" => "Home", // $title , is accessible
-        "name" => "Larry",
-        "jobs" => [
-            [
-                'id' => '1',
-                'title' => 'Directory',
-                'salary' => '$50,000'
-            ],
-            [
-                'id' => '2',
-                'title' => 'Programmer',
-                'salary' => '$10,000'
-            ]
-        ]
+    return view('jobs', [
+        'jobs' => Job::all()
     ]);
 });
 
-
 Route::get('/jobs/{id}', function ($id) {
-    $jobs = [
-        [
-            'id' => '1',
-            'title' => 'Directory',
-            'salary' => '$50,000'
-        ],
-        [
-            'id' => '2',
-            'title' => 'Programmer',
-            'salary' => '$10,000'
-        ]
-    ];
 
-    $job = Arr::first($jobs, fn($job) => $job['id'] === $id);
+    $job = Job::find(intval($id)); // Ensure $id is cast to an integer
 
+    if (!$job) {
+        abort(404, 'Job not found');
+    }
     return view('job', ['job' => $job]);
 });
+
 Route::get('/contact', function () {
     return view('contact');
 });
