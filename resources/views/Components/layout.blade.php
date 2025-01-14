@@ -7,11 +7,12 @@
     <title>Home Page</title>
 </head>
 <body>
-<nav>
-    <a href="/">Home</a>
-    <a href="about">About</a>
-    <a href="contact">Contact</a>
-</nav>
-<h1>Hello this is Home page</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a>
+    </nav>
+
+    <?php echo $slot ?>
 </body>
 </html>
