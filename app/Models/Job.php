@@ -4,15 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Support\Arr;
 
-class Job extends Model{
+class Job extends Model {
 
     use HasFactory; /* So we can use Factory*/
 
     protected $table = 'job_listing';
 
-    protected $fillable = ['title', 'salary']; /*Only User can modify these data.*/
+    protected $fillable = ['title', 'salary', 'employer_id']; /*Only User can modify these data.*/
+
+    /*
+    fillable Alternative (If we want to disable this feature use below)
+    protected $guarded = [];
+    */
+    public function employer(){
+
+        return $this->belongsTo(Employer::class);
+    }
 
 /*    public static function all(): array {
         return [
