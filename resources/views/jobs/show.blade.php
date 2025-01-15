@@ -15,6 +15,5 @@
         <x-button href="/jobs/{{ $job->id }}/edit">Edit Job</x-button>
     </p>
 
-
 </x-layout>
 
